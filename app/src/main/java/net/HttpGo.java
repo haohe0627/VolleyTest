@@ -1,7 +1,10 @@
 package net;
 
+import com.example.hh.common_util.HttpHelper;
+
 import net.Listener.HttpListener;
-import net.Response.GetPicResponse;
+import net.Post.testPost;
+import net.Response.testResponse;
 
 /**
  * Created by Administrator on 2017/4/10 0010.
@@ -9,9 +12,14 @@ import net.Response.GetPicResponse;
 
 public class HttpGo {
 
-    private String comm_url = "";
+    public static void getTestInfo(String comm_url, String username, String pwd, HttpListener<testResponse> picListener){
+        HttpHelper<testResponse> helper = new HttpHelper<>(
+                comm_url,
+                new testPost(username, pwd),
+                testResponse.class,
+                picListener
+                );
 
-    public static void getPic(HttpListener<GetPicResponse> picResponse){
-
+        helper.start();
     }
 }

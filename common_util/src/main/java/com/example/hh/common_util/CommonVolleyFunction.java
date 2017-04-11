@@ -15,10 +15,11 @@ import com.android.volley.toolbox.Volley;
 
 public class CommonVolleyFunction {
 
-    public void doFunction(Context context){
+    public void doFunction(String url, Context context){
         RequestQueue queue = Volley.newRequestQueue(context);
 
-        StringRequest stringRequest = new StringRequest("http://www.baidu.com",
+        StringRequest stringRequest = new StringRequest
+                (url,
                 new Response.Listener<String>(){
                     @Override
                     public void onResponse(String response) {
