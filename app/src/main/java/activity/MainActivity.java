@@ -18,8 +18,8 @@ import net.Response.testResponse;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String common_url = "http://192.168.1.164:8080/User/Login";
-    private String username = "haohe";
+    private String common_url = "https://service.dytyou.com:8080/User/Login";
+    private String username = "15002445353";
     private String pwd = "123456";
 
     private TextView show;
