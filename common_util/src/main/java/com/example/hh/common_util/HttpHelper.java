@@ -70,7 +70,9 @@ public class HttpHelper<T extends ResponseBean> {
         }else{ // get
             if(postBean != null){
                 Class mClass = postBean.getClass();
-                Field[]fields = mClass.getFields(); // 获取所有字段
+                //getDeclaredFields()返回Class中所有的字段，包括私有字段；
+                //getFields  只返回公共字段，即有public修饰的字段
+                Field[]fields = mClass.getFields();
                 StringBuilder sb = new StringBuilder();
                 for(Field field : fields){
                     try {
@@ -84,11 +86,6 @@ public class HttpHelper<T extends ResponseBean> {
 
             request = new HttpRequest<>(Request.Method.GET, responseClass, url, listener, errorListener);
         }
-        /*
-            post get 两种请求方式区别
-               post可传json get将参数一般放入地址中获取数据
-               post一般用作提交表单，get则用作请求值
-         */
 
         return request;
     }

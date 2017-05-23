@@ -1,7 +1,6 @@
 package com.example.hh.common_util;
 
 import android.content.Context;
-import android.net.http.HttpResponseCache;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;

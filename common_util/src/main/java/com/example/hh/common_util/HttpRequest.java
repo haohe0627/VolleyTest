@@ -15,6 +15,7 @@ import java.util.Map;
 
 /**
  * Created by haohe on 2017/4/10 0010.
+ * 继承JsonRequest 重写
  */
 
 public class HttpRequest<T>extends JsonRequest<T> {
@@ -22,18 +23,33 @@ public class HttpRequest<T>extends JsonRequest<T> {
     private Class<T>mClass;
     private Map<String, String> header;
 
-    public HttpRequest(int method, Class<T>mClass, String url, String requestBody, Response.Listener<T> listener, Response.ErrorListener errorListener){
+    public HttpRequest(int method,
+                       Class<T>mClass,
+                       String url,
+                       String requestBody,
+                       Response.Listener<T> listener,
+                       Response.ErrorListener errorListener){
+
         super(method, url, requestBody, listener, errorListener);
         this.mClass = mClass;
         header = new HashMap<>();
     }
 
-    public HttpRequest(int method, Class<T>mClass, String url, Response.Listener<T> listener, Response.ErrorListener errorListener) {
+    public HttpRequest(int method,
+                       Class<T>mClass,
+                       String url,
+                       Response.Listener<T> listener,
+                       Response.ErrorListener errorListener) {
         super(method, url, null, listener, errorListener);
         this.mClass = mClass;
         header = new HashMap<>();
     }
 
+    /**
+     *  重写response方法，
+     * @param response
+     * @return
+     */
     @Override
     protected Response<T> parseNetworkResponse(NetworkResponse response) {
 
